@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Investigación: Responsabilidad Familiar y Habilidades Emprendedoras | Maicao</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #fefcf5;
+            color: #1e2a2e;
+            line-height: 1.5;
+            scroll-behavior: smooth;
+        }
+
+        /* Animaciones globales suaves */
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% { text-shadow: 0 0 0px rgba(232, 121, 39, 0.2);}
+            100% { text-shadow: 0 0 8px rgba(232, 121, 39, 0.5);}
+        }
+
+        .animate-fadeUp {
+            animation: fadeUp 0.7s ease forwards;
+        }
+
+        .animate-slideLeft {
+            animation: slideInLeft 0.6s ease forwards;
+        }
+
+        .section-card {
+            background: rgba(255, 255, 245, 0.92);
+            backdrop-filter: blur(0px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+            border: 1px solid #fff2e0;
+        }
+
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 40px -16px rgba(0, 0, 0, 0.12);
+            border-color: #ffe0bf;
+        }
+
+        /* header hero */
+        .hero {
+            background: linear-gradient(135deg, #1e3c2c 0%, #2a5a3a 100%);
+            color: white;
+            padding: 3rem 1.5rem 4rem 1.5rem;
+            border-radius: 0 0 3rem 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: "🌱";
+            font-size: 220px;
+            opacity: 0.05;
+            position: absolute;
+            bottom: -30px;
+            right: -40px;
+            pointer-events: none;
+            transform: rotate(10deg);
+        }
+
+        .hero-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge-invest {
+            background: rgba(255,215,160,0.25);
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.3px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        @media (max-width: 780px) {
+            h1 { font-size: 1.9rem; }
+        }
+
+        .autor-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            font-weight: 400;
+            opacity: 0.9;
+        }
+
+        /* container general */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* grid */
+        .grid-2cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .card-header {
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-left: 6px solid #e87929;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            color: #2d3e2b;
+        }
+
+        .list-styled {
+            list-style: none;
+            margin-top: 1rem;
+        }
+        .list-styled li {
+            margin-bottom: 0.85rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+        .list-styled li i {
+            color: #e87929;
+            font-size: 1.2rem;
+            margin-top: 0.2rem;
+        }
+
+        .keyword-cloud {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+        }
+        .keyword {
+            background: #f0ede5;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #3e5a3a;
+            transition: all 0.2s;
+        }
+        .keyword:hover {
+            background: #e87929;
+            color: white;
+            transform: scale(1.02);
+        }
+
+        .quote-text {
+            font-style: italic;
+            background: #f8f6ef;
+            padding: 1.2rem;
+            border-radius: 1.5rem;
+            border-left: 4px solid #e87929;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+        }
+
+        .subtitle-section {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 2rem 0 1rem 0;
+            color: #2b4b2a;
+            position: relative;
+            display: inline-block;
+        }
+
+        hr {
+            margin: 2rem 0;
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #e0cfb1, transparent);
+        }
+
+        footer {
+            background: #1e2a22;
+            color: #ddddcc;
+            text-align: center;
+            padding: 2rem;
+            border-radius: 2rem 2rem 0 0;
+            margin-top: 3rem;
+        }
+
+        .grid-3cols {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .theory-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #f0e3d4;
+            transition: all 0.25s;
+        }
+        .theory-card i {
+            font-size: 2rem;
+            color: #e87929;
+            margin-bottom: 0.8rem;
+        }
+
+        .icon-em {
+            font-size: 1.3rem;
+            width: 2rem;
+            text-align: center;
+        }
+
+        .btn-floating {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #e87929;
+            width: 48px;
+            height: 48px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.4rem;
+            box-shadow: 0 10px 15px -5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: 0.2s;
+            z-index: 99;
+            border: none;
+        }
+        .btn-floating:hover {
+            background: #c55f1a;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 640px) {
+            .container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<button class="btn-floating" id="backToTop" aria-label="Subir">
+    <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- Hero principal -->
+<section class="hero">
+    <div class="hero-content">
+        <div class="badge-invest">
+            <i class="fas fa-flask"></i> Investigación aplicada · Trabajo Social 2026
+        </div>
+        <h1>Responsabilidad familiar en desarrollo de habilidades emprendedoras en los estudiantes de los grados décimo y undécimo<br> 
+        <span style="font-size: 1.4rem; display: block; margin-top: 0.5rem;">Institución Educativa Número Siete, sede Juan XXIII, Maicao, La Guajira</span></h1>
+        <div class="autor-info">
+            <span><i class="fas fa-user-graduate"></i> Lina Marcela Tamayo Acosta</span>
+            <span><i class="fas fa-university"></i> Programa de Trabajo Social — Universidad de La Guajira, Sede Maicao (2026)</span>
+        </div>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Resumen y palabras clave -->
+    <div class="grid-2cols animate-fadeUp" style="animation-delay: 0.1s;">
+        <div class="section-card" style="padding: 1.8rem;">
+            <div class="card-header"><i class="fas fa-feather-alt" style="margin-right: 10px;"></i> Resumen</div>
+            <p style="margin-bottom: 0.8rem;">La presente investigación tuvo como propósito analizar la responsabilidad familiar en el desarrollo de habilidades emprendedoras en estudiantes de los grados décimo y undécimo de la I.E. N.° 7, sede Juan XXIII, Maicao, La Guajira, durante el primer semestre de 2026. La familia, como entorno primario de socialización, transmite valores y dinámicas que inciden en competencias como creatividad, iniciativa y toma de decisiones en los jóvenes.</p>
+            <div class="keyword-cloud">
+                <span class="keyword"><i class="fas fa-tag"></i> Responsabilidad familiar</span>
+                <span class="keyword"><i class="fas fa-lightbulb"></i> Habilidades emprendedoras</span>
+                <span class="keyword"><i class="fas fa-users"></i> Familia</span>
+                <span class="keyword"><i class="fas fa-school"></i> Educación media</span>
+                <span class="keyword"><i class="fas fa-map-marker-alt"></i> Maicao</span>
+            </div>
+        </div>
+        <div class="section-card" style="padding: 1.8rem;">
+            <div class="card-header"><i class="fas fa-bullseye"></i> Objetivo General</div>
+            <p><strong>Analizar la responsabilidad familiar en desarrollo de habilidades emprendedoras</strong> en los estudiantes de los grados décimo y undécimo de la Institución Educativa Número Siete, sede Juan XXIII, en Maicao, La Guajira.</p>
+            <div style="margin-top: 1.5rem;">
+                <div class="card-header" style="font-size: 1.2rem; border-left-color: #c0a36b;"><i class="fas fa-list-check"></i> Objetivos específicos</div>
+                <ul class="list-styled">
+                    <li><i class="fas fa-chevron-circle-right"></i> Caracterizar a las familias de los estudiantes.</li>
+                    <li><i class="fas fa-chevron-circle-right"></i> Identificar funciones formativas familiares en el desarrollo emprendedor.</li>
+                    <li><i class="fas fa-chevron-circle-right"></i> Describir el apoyo brindado por la familia y la escuela.</li>
+                    <li><i class="fas fa-chevron-circle-right"></i> Proponer estrategias de fortalecimiento desde el contexto familiar y educativo.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Justificación y metodología -->
+    <div class="grid-2cols animate-fadeUp" style="animation-delay: 0.2s;">
+        <div class="section-card" style="padding: 1.8rem;">
+            <div class="card-header"><i class="fas fa-seedling"></i> Justificación</div>
+            <p>Relevancia teórica y social: aporta al conocimiento sobre responsabilidad familiar y habilidades emprendedoras en jóvenes de Maicao, La Guajira, frente a desafíos socioeconómicos. El estudio busca comprender realidades que influyen en proyectos de vida, promoviendo estrategias que fortalezcan el vínculo familia-escuela.</p>
+        </div>
+        <div class="section-card" style="padding: 1.8rem;">
+            <div class="card-header"><i class="fas fa-chart-line"></i> Metodología</div>
+            <p><strong>Enfoque cualitativo</strong> (Maldonado, 2018) · <strong>Alcance descriptivo</strong> (Arias y Covinos, 2021) · <strong>Diseño de campo, no experimental, transversal</strong> (Hernández-Sampieri, 2018). Muestra intencional de 15 estudiantes. Técnicas: entrevista semiestructurada y observación no participante. Análisis mediante triangulación hermenéutica con los referentes teóricos de Bronfenbrenner, Bandura y Bourdieu.</p>
+            <div class="quote-text"><i class="fas fa-quote-left"></i> Muestreo intencional privilegia la profundidad y riqueza de experiencias (Flick, 2012).</div>
+        </div>
+    </div>
+
+    <!-- Marco teórico expandido (3 columnas) -->
+    <h2 class="subtitle-section animate-slideLeft"><i class="fas fa-book-open"></i> Marco Teórico Referencial</h2>
+    <div class="grid-3cols">
+        <div class="theory-card animate-fadeUp" style="animation-delay: 0.05s;">
+            <i class="fas fa-globe-americas"></i>
+            <h3 style="margin-bottom: 0.5rem;">Bronfenbrenner (1979)</h3>
+            <p><strong>Teoría Ecológica del Desarrollo Humano:</strong> El desarrollo humano es resultado de la interacción entre la persona y sistemas ambientales (micro, meso, exo, macrosistema). La familia es microsistema esencial que moldea habilidades y valores.</p>
+        </div>
+        <div class="theory-card animate-fadeUp" style="animation-delay: 0.1s;">
+            <i class="fas fa-brain"></i>
+            <h3 style="margin-bottom: 0.5rem;">Bandura (1977)</h3>
+            <p><strong>Aprendizaje Social:</strong> El aprendizaje por observación, imitación y modelado de conductas. La familia funciona como principal modelo en la adquisición de iniciativa y creatividad. Mediado por atención, retención y motivación.</p>
+        </div>
+        <div class="theory-card animate-fadeUp" style="animation-delay: 0.15s;">
+            <i class="fas fa-handshake"></i>
+            <h3 style="margin-bottom: 0.5rem;">Bourdieu (1986)</h3>
+            <p><strong>Capital Social:</strong> Las relaciones y redes sociales constituyen recursos que influyen en oportunidades. La familia facilita acceso a capital económico, cultural y social, potenciando el desarrollo emprendedor de los jóvenes.</p>
+        </div>
+    </div>
+
+    <!-- Categorías centrales + subcategorías -->
+    <h2 class="subtitle-section animate-slideLeft"><i class="fas fa-layer-group"></i> Categorías Centrales</h2>
+    <div class="grid-2cols">
+        <div class="section-card" style="padding: 1.8rem;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: #e87929;">🏠 Responsabilidad familiar</div>
+            <p class="mt-2">Conjunto de compromisos, funciones y obligaciones que aseguran bienestar y desarrollo integral. Hernández Prados y Lara Guillén (2025) señalan que se configura por distribución de roles, implicación en el cuidado, educación y valores. No es estática, responde a construcciones sociales y culturales.</p>
+            <div style="margin-top: 1rem; background: #faf7f0; border-radius: 1rem; padding: 0.8rem;">
+                <i class="fas fa-hand-sparkles"></i> <strong>Subcategorías asociadas:</strong> Función formativa, Apoyo emocional, Redes de apoyo.
+            </div>
+        </div>
+        <div class="section-card" style="padding: 1.8rem;">
+            <div style="font-size: 1.5rem; font-weight: 800; color: #e87929;">💡 Habilidades emprendedoras</div>
+            <p>Competencias para identificar oportunidades, generar ideas innovadoras y desarrollar iniciativas. Urribarri et al. (2023) destacan que no solo se orientan a crear empresas, sino a actuar proactivamente, asumir retos y resolver problemas en entornos cambiantes.</p>
+            <div style="margin-top: 1rem; background: #faf7f0; border-radius: 1rem; padding: 0.8rem;">
+                <i class="fas fa-chalkboard-user"></i> <strong>Subcategorías clave:</strong> Creatividad · Iniciativa · Toma de decisiones
+            </div>
+        </div>
+    </div>
+
+    <!-- Subcategorías profundizadas con estilo -->
+    <div class="grid-3cols" style="margin-top: 0.5rem;">
+        <div class="theory-card">
+            <i class="fas fa-chalkboard"></i>
+            <h3>Función formativa</h3>
+            <p>Participación activa en la educación: acompañamiento, orientación y seguimiento. Trasciende lo académico, construye autonomía, disciplina y toma de decisiones.</p>
+        </div>
+        <div class="theory-card">
+            <i class="fas fa-heart"></i>
+            <h3>Apoyo emocional</h3>
+            <p>Acompañamiento afectivo que genera seguridad, motivación y confianza. Un entorno emocional favorable potencia el desarrollo personal y reduce vulnerabilidades.</p>
+        </div>
+        <div class="theory-card">
+            <i class="fas fa-network-wired"></i>
+            <h3>Redes de apoyo</h3>
+            <p>Vínculos familiares con escuela, comunidad e instituciones. Bourdieu: el capital social facilita recursos y oportunidades educativas, sociales y económicas.</p>
+        </div>
+    </div>
+    <div class="grid-3cols">
+        <div class="theory-card">
+            <i class="fas fa-palette"></i>
+            <h3>Creatividad</h3>
+            <p>Capacidad de generar ideas novedosas y soluciones innovadoras. Clave para transformar el entorno y adaptarse a contextos retadores (Urribarri et al.).</p>
+        </div>
+        <div class="theory-card">
+            <i class="fas fa-rocket"></i>
+            <h3>Iniciativa</h3>
+            <p>Disposición para actuar autónomamente, asumir responsabilidades y proponer acciones. Implica proactividad y liderazgo hacia proyectos de vida.</p>
+        </div>
+        <div class="theory-card">
+            <i class="fas fa-check-double"></i>
+            <h3>Toma de decisiones</h3>
+            <p>Análisis crítico de alternativas, asumir riesgos de manera consciente. Desarrolla autonomía y pensamiento estratégico ante la incertidumbre.</p>
+        </div>
+    </div>
+
+    <!-- Impacto esperado -->
+    <div class="section-card" style="padding: 2rem; margin: 1.5rem 0;">
+        <div class="card-header"><i class="fas fa-chart-simple"></i> Impacto Esperado</div>
+        <div class="grid-2cols" style="gap: 1rem; margin-top: 0.5rem;">
+            <div><i class="fas fa-hand-holding-heart"></i> <strong>Social:</strong> Mejora del bienestar estudiantil, reducción de riesgos como deserción escolar y vulnerabilidad psicosocial, fortalecimiento de dinámicas familiares emprendedoras.</div>
+            <div><i class="fas fa-microscope"></i> <strong>Académico:</strong> Aportes al conocimiento sobre responsabilidad familiar en contextos escolares vulnerables de Maicao, inspirando estrategias institucionales para habilidades emprendedoras.</div>
+        </div>
+        <div class="quote-text" style="margin-top: 1rem;">
+            <i class="fas fa-graduation-cap"></i> Se espera que las familias comprendan su rol y provean estrategias formativas más efectivas, creando entornos que impulsen el desarrollo integral.
+        </div>
+    </div>
+
+    <!-- Estrategias propuestas (síntesis del objetivo específico 4) -->
+    <div class="section-card" style="padding: 2rem; background: #fff7ed;">
+        <div class="card-header"><i class="fas fa-lightbulb"></i> Propuesta de Estrategias de Fortalecimiento</div>
+        <div class="grid-2cols">
+            <ul class="list-styled">
+                <li><i class="fas fa-chalkboard-user icon-em"></i> Talleres vivenciales para familias sobre comunicación y acompañamiento proactivo.</li>
+                <li><i class="fas fa-seedling icon-em"></i> Fomento de microproyectos escolares con involucramiento familiar (ferias de ideas).</li>
+                <li><i class="fas fa-heart icon-em"></i> Creación de redes de apoyo entre escuela, familias y emprendedores locales.</li>
+            </ul>
+            <ul class="list-styled">
+                <li><i class="fas fa-brain icon-em"></i> Espacios de mentoría para estimular creatividad y toma de decisiones.</li>
+                <li><i class="fas fa-calendar-alt icon-em"></i> Jornadas de reflexión “Familia Emprendedora” dentro de la sede Juan XXIII.</li>
+                <li><i class="fas fa-file-signature icon-em"></i> Guía de buenas prácticas para fortalecer el capital social desde el hogar.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Información complementaria: muestra y contexto Maicao -->
+    <hr>
+    <div class="grid-2cols" style="margin-bottom: 1rem;">
+        <div>
+            <h3 style="font-weight: 700; margin-bottom: 0.75rem;"><i class="fas fa-users-viewfinder"></i> Contexto & Muestra</h3>
+            <p>Estudiantes de grados décimo y undécimo de la Institución Educativa Número Siete, sede Juan XXIII, en Maicao (La Guajira). Muestra intencional de 15 estudiantes. El enfoque cualitativo permitió capturar las narrativas sobre apoyo familiar, función formativa y emocional.</p>
+        </div>
+        <div>
+            <h3 style="font-weight: 700; margin-bottom: 0.75rem;"><i class="fas fa-chart-simple"></i> Técnicas de recolección</h3>
+            <p><i class="fas fa-comments"></i> Entrevista semiestructurada · <i class="fas fa-eye"></i> Observación no participante · Diario de campo · Triangulación hermenéutica con Bronfenbrenner, Bandura y Bourdieu.</p>
+        </div>
+    </div>
+    <div class="quote-text" style="background: #e8f0e5;">
+        <i class="fas fa-quote-right"></i> “La familia no solo educa, sino que construye puentes para que los jóvenes se conviertan en agentes de cambio en sus comunidades” — Lina Marcela Tamayo Acosta.
+    </div>
+</div>
+
+<footer>
+    <p><i class="fas fa-scroll"></i> Trabajo de investigación · Programa de Trabajo Social · Universidad de La Guajira, Sede Maicao (2026)</p>
+    <p style="margin-top: 0.7rem; font-size: 0.8rem;">Basado en el estudio: Responsabilidad familiar en desarrollo de habilidades emprendedoras - Grados 10° y 11°, I.E. N°7 Juan XXIII, Maicao. Datos e información con fines académicos y divulgativos.</p>
+    <div style="margin-top: 1rem;">
+        <i class="fas fa-map-pin"></i> Maicao, La Guajira | <i class="fas fa-calendar-week"></i> Primer semestre 2026
+    </div>
+</footer>
+
+<script>
+    // Smooth scroll y botón back to top con animaciones suaves
+    const backToTopBtn = document.getElementById('backToTop');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTopBtn.style.opacity = '1';
+            backToTopBtn.style.visibility = 'visible';
+        } else {
+            backToTopBtn.style.opacity = '0';
+            backToTopBtn.style.visibility = 'hidden';
+        }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Observador para animaciones cuando entran en viewport (adicional a las iniciales)
+    const animatedElements = document.querySelectorAll('.animate-fadeUp, .animate-slideLeft, .theory-card, .section-card');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                if (entry.target.classList.contains('animate-fadeUp')) {
+                    entry.target.style.animationPlayState = 'running';
+                }
+                if (entry.target.classList.contains('theory-card')) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -30px 0px" });
+
+    animatedElements.forEach(el => {
+        if (el.classList.contains('theory-card')) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.5s ease';
+        }
+        if (el.classList.contains('section-card') && !el.style.animation) {
+            // ya tienen animación en css, pero para asegurar reproducir
+        }
+        observer.observe(el);
+    });
+
+    // Forzar que los theory-card con opacidad 0 se muestren al hacer scroll
+    // también añadimos un pequeño retardo para las tarjetas del marco teórico
+    document.querySelectorAll('.theory-card').forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(18px)';
+    });
+    const cardObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+                cardObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+    document.querySelectorAll('.theory-card').forEach(card => cardObserver.observe(card));
+
+    // garantizar título animado
+    console.log("Página estática informativa | Investigación educativa Maicao");
+</script>
+</body>
+</html>
